@@ -1,4 +1,4 @@
-# laravel-ap-api
+# laravel-wp-api
 Laravel package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API) 
 
 ## Install
