@@ -1,0 +1,26 @@
+{
+    "name": "cyberduck/laravel-wp-api",
+    "description": "",
+    "keywords": ["laravel", "package", "zoopla"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Speakman",
+            "email": "ben@cyber-duck.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*|~5.0",
+        "guzzlehttp/guzzle": "~4.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Cyberduck\\LaravelWpApi\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
