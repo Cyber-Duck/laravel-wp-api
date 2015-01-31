@@ -1,7 +1,7 @@
 {
     "name": "cyberduck/laravel-wp-api",
     "description": "Laravel package for the Wordpress JSON REST API",
-    "keywords": ["laravel", "package", "zoopla"],
+    "keywords": ["laravel", "package", "wordpress", "API", "REST"],
     "license": "MIT",
     "authors": [
         {
