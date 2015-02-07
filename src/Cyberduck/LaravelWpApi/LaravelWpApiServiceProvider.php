@@ -19,7 +19,9 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('cyberduck/laravel-wp-api');
+		$this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('/packages/cyberduck/laravel-wp-api/laravel-wp-api.php'),
+        ]);
 	}
 
 	/**
@@ -31,7 +33,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 	{
 		$this->app->bindShared('wp-api', function ($app) {
 
-            $endpoint = $this->app['config']->get('laravel-wp-api::endpoint');
+            $endpoint = $this->app['config']->get('laravel-wp-api.endpoint');
             $client   = new Client();
             
             return new WpApi($endpoint, $client);

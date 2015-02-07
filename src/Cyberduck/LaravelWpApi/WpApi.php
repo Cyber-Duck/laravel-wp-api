@@ -18,6 +18,11 @@ class WpApi
         return $this->_get('posts', ['page' => $page]);
     }
 
+    public function pages($page = null)
+    {
+        return $this->_get('posts', ['type' => 'page', 'page' => $page]);
+    }
+
     public function post($slug)
     {
         return $this->_get('posts', ['filter' => ['name' => $slug]]);
@@ -26,6 +31,11 @@ class WpApi
     public function categories()
     {
         return $this->_get('taxonomies/category/terms');
+    }
+
+    public function tags()
+    {
+        return $this->_get('taxonomies/post_tag/terms');
     }
 
     public function category_posts($slug, $page = null)

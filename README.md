@@ -1,5 +1,5 @@
 # laravel-wp-api
-Laravel package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API) 
+Laravel 5 package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API) 
 
 ## Install
 
@@ -11,9 +11,9 @@ Simply add the following line to your `composer.json` and run install/update:
 
 Publish the package config files to configure the location of your Wordpress install:
 
-    php artisan config:publish cyberduck/laravel-wp-api
+    php artisan vendor:publish
 
-You will also need to add the service provider and the facade alias to your `app/config/app.php`:
+You will also need to add the service provider and optionally the facade alias to your `app/config/app.php`:
 
 ```php
 'providers' => array(
@@ -36,6 +36,12 @@ WpApi::posts($page);
 
 ```
 
+#### Pages
+```php
+WpApi::pages($page);
+
+```
+
 #### Post
 ```php
 WpApi::post($slug);
@@ -45,6 +51,12 @@ WpApi::post($slug);
 #### Categories
 ```php
 WpApi::categories();
+
+```
+
+#### Tags
+```php
+WpApi::tags();
 
 ```
 
