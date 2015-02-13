@@ -20,7 +20,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-            __DIR__.'/../../config/config.php' => config_path('/packages/cyberduck/laravel-wp-api/laravel-wp-api.php'),
+            __DIR__.'/../../config/config.php' => config_path('wp-api.php'),
         ]);
 	}
 
