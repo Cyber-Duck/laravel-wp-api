@@ -56,11 +56,9 @@ class WpApi
     public function _get($method, array $query = array())
     {
 
-        $client = new Client();
-
         try {
 
-            $response = $client->get($this->endpoint . '/wp-json/' . $method, ['query' => $query]);
+            $response = $this->client->get($this->endpoint . '/wp-json/' . $method, ['query' => $query]);
 
             $return = [
                 'results' => $response->json(),
