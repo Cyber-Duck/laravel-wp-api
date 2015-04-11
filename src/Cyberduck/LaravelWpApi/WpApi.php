@@ -27,6 +27,11 @@ class WpApi
     {
         return $this->_get('posts', ['filter' => ['name' => $slug]]);
     }
+    
+    public function page($slug)
+    {
+        return $this->_get('posts', ['type' => 'page', 'filter' => ['name' => $slug]]);
+    }
 
     public function categories()
     {
