@@ -60,7 +60,7 @@ class WpApi
 
     public function archive($year, $month, $page = null)
     {
-        return $this->_get('posts', ['page' => $page, 'filter' => ['year' => $year, 'month' => $month]]);
+        return $this->_get('posts', ['page' => $page, 'filter' => ['year' => $year, 'monthnum' => $month]]);
     }
 
     public function _get($method, array $query = array())
