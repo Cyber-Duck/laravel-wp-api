@@ -33,6 +33,11 @@ class WpApi
         return $this->_get('posts', ['type' => 'page', 'filter' => ['name' => $slug]]);
     }
 
+    public function author($name)
+    {
+        return $this->_get('posts', ['type' => 'page', 'filter' => ['author_name' => $name]]);
+    }
+
     public function categories()
     {
         return $this->_get('taxonomies/category/terms');
