@@ -34,9 +34,10 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 		$this->app->bindShared('wp-api', function ($app) {
 
             $endpoint = $this->app['config']->get('wp-api.endpoint');
+            $auth     = $this->app['config']->get('wp-api.auth');
             $client   = new Client();
             
-            return new WpApi($endpoint, $client);
+            return new WpApi($endpoint, $client, $auth);
 
         });
 

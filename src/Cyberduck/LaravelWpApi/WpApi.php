@@ -7,10 +7,11 @@ class WpApi
 
     protected $client;
 
-    public function __construct($endpoint, Client $client)
+    public function __construct($endpoint, Client $client, $auth = null)
     {
         $this->endpoint = $endpoint;
         $this->client   = $client;
+        $this->auth     = $auth;
     }
 
     public function posts($page = null)
@@ -73,7 +74,13 @@ class WpApi
 
         try {
 
-            $response = $this->client->get($this->endpoint . '/wp-json/' . $method, ['query' => $query]);
+            $query = ['query' => $query];
+
+            if($this->auth) {
+                $query['auth'] = $this->auth;
+            }
+
+            $response = $this->client->get($this->endpoint . '/wp-json/' . $method, $query);
 
             $return = [
                 'results' => $response->json(),
