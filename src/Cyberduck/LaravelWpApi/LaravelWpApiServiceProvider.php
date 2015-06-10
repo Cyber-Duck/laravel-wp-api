@@ -1,7 +1,6 @@
 <?php namespace Cyberduck\LaravelWpApi;
 
 use Illuminate\Support\ServiceProvider;
-use GuzzleHttp\Client;
 
 class LaravelWpApiServiceProvider extends ServiceProvider {
 
@@ -35,7 +34,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 
             $endpoint = $this->app['config']->get('wp-api.endpoint');
             $auth     = $this->app['config']->get('wp-api.auth');
-            $client   = new Client();
+            $client   = $this->app->make('GuzzleHttp\Client');
             
             return new WpApi($endpoint, $client, $auth);
 
