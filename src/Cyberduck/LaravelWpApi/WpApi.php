@@ -80,7 +80,7 @@ class WpApi
                 $query['auth'] = $this->auth;
             }
 
-            $response = $this->client->get($this->endpoint . '/wp-json/' . $method, $query);
+            $response = $this->client->get($this->endpoint . $method, $query);
 
             $return = [
                 'results' => $response->json(),

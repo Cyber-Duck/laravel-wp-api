@@ -2,6 +2,6 @@
 
 return array(
 
-    'endpoint' => '<WP_LOCATION>',
+    'endpoint' => 'http://<WP_LOCATION>/wp-json/',
     
 );
