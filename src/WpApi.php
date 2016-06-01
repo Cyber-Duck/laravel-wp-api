@@ -1,4 +1,5 @@
-<?php namespace Cyberduck\LaravelWpApi;
+<?php
+namespace Cyberduck\LaravelWpApi;
 
 use GuzzleHttp\ClientInterface;
 
@@ -44,17 +45,17 @@ class WpApi
         return $this->_get('taxonomies/post_tag/terms');
     }
 
-    public function category_posts($slug, $page = null)
+    public function categoryPosts($slug, $page = null)
     {
         return $this->_get('posts', ['page' => $page, 'filter' => ['category_name' => $slug]]);
     }
 
-    public function author_posts($name, $page = null)
+    public function authorPosts($name, $page = null)
     {
         return $this->_get('posts', ['page' => $page, 'filter' => ['author_name' => $name]]);
     }
 
-    public function tag_posts($tags, $page = null)
+    public function tagPosts($tags, $page = null)
     {
         return $this->_get('posts', ['page' => $page, 'filter' => ['tag' => $tags]]);
     }
