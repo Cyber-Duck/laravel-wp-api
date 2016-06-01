@@ -35,8 +35,8 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
             $endpoint = $this->app['config']->get('wp-api.endpoint');
             $auth     = $this->app['config']->get('wp-api.auth');
             $client   = $this->app->make('GuzzleHttp\Client');
-            
-            if ($this->app['config']->get('wp-api.curl') && !empty($this->app['config']->get('wp-api.curl'))) {
+            $curlOpt = $this->app['config']->get('wp-api.curl');
+            if ($curlOpt && !empty($curlOpt)) {
                 $client->setDefaultOption('config', ['curl' => $this->app['config']->get('wp-api.curl')]);
             }
             
