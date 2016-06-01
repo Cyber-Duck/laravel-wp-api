@@ -1,12 +1,16 @@
 {
     "name": "cyberduck/laravel-wp-api",
     "description": "Laravel package for the Wordpress JSON REST API",
-    "keywords": ["laravel", "package", "wordpress", "API", "REST"],
+    "keywords": ["laravel", "wordpress", "API", "REST"],
     "license": "MIT",
     "authors": [
         {
             "name": "Ben Speakman",
-            "email": "ben@cyber-duck.co.uk"
+            "email": "ben@3sq.re"
+        },
+        {
+            "name": "Simone Todaro",
+            "email": "simo.todaro@gmail.com"
         }
     ],
     "require": {
@@ -15,7 +19,7 @@
         "guzzlehttp/guzzle": "~5.0"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Cyberduck\\LaravelWpApi\\": "src/"
         }
     },

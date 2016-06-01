@@ -1,13 +1,13 @@
 <?php namespace Cyberduck\LaravelWpApi;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 
 class WpApi
 {
 
     protected $client;
 
-    public function __construct($endpoint, Client $client, $auth = null)
+    public function __construct($endpoint, ClientInterface $client, $auth = null)
     {
         $this->endpoint = $endpoint;
         $this->client   = $client;
@@ -28,7 +28,7 @@ class WpApi
     {
         return $this->_get('posts', ['filter' => ['name' => $slug]]);
     }
-    
+
     public function page($slug)
     {
         return $this->_get('posts', ['type' => 'page', 'filter' => ['name' => $slug]]);
@@ -71,42 +71,29 @@ class WpApi
 
     public function _get($method, array $query = array())
     {
-
         try {
-
             $query = ['query' => $query];
-
-            if($this->auth) {
+            if ($this->auth) {
                 $query['auth'] = $this->auth;
             }
-
             $response = $this->client->get($this->endpoint . $method, $query);
-
             $return = [
                 'results' => $response->json(),
                 'total'   => $response->getHeader('X-WP-Total'),
                 'pages'   => $response->getHeader('X-WP-TotalPages')
             ];
-
         } catch (\GuzzleHttp\Exception\TransferException $e) {
-
             $error['message'] = $e->getMessage();
-
             if ($e->getResponse()) {
                 $error['code'] = $e->getResponse()->getStatusCode();
             }
-
             $return = [
                 'error'   => $error,
                 'results' => [],
                 'total'   => 0,
                 'pages'   => 0
             ];
-
         }
-
         return $return;
-
     }
-
 }
