@@ -79,7 +79,7 @@ class WpApi
             }
             $response = $this->client->get($this->endpoint . $method, $query);
             $return = [
-                'results' => $response->json(),
+                'results' => json_decode($response->getBody()),
                 'total'   => $response->getHeader('X-WP-Total'),
                 'pages'   => $response->getHeader('X-WP-TotalPages')
             ];
