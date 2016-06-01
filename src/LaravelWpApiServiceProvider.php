@@ -1,6 +1,8 @@
-<?php namespace Cyberduck\LaravelWpApi;
+<?php
+namespace Cyberduck\LaravelWpApi;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 
 class LaravelWpApiServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,9 @@ class LaravelWpApiServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('wp-api.php'),
         ]);
+
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Cyberduck\LaravelWpApi\WpApi', '\Cyberduck\LaravelWpApi\Facades\WpApi');
     }
 
     /**
@@ -30,7 +35,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('wp-api', function ($app) {
+        $this->app->bind(WpApi::class, function ($app) {
             $endpoint = $this->app['config']->get('wp-api.endpoint');
             $auth = $this->app['config']->get('wp-api.auth');
             $client = $this->app->make('GuzzleHttp\Client');
@@ -39,10 +44,6 @@ class LaravelWpApiServiceProvider extends ServiceProvider
                 $client->setDefaultOption('config', ['curl' => $curlOpt]);
             }
             return new WpApi($endpoint, $client, $auth);
-        });
-
-        $this->app->bind('Cyberduck\LaravelWpApi\WpApi', function ($app) {
-            return $app['wp-api'];
         });
     }
 
@@ -53,6 +54,6 @@ class LaravelWpApiServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['wp-api'];
+        return [WpApi::class];
     }
 }
