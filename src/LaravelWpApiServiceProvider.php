@@ -25,7 +25,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider
         ]);
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('Cyberduck\LaravelWpApi\WpApi', '\Cyberduck\LaravelWpApi\Facades\WpApi');
+        $loader->alias('WpApi', '\Cyberduck\LaravelWpApi\Facades\WpApi');
     }
 
     /**
