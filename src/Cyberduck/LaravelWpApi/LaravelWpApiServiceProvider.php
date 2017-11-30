@@ -30,7 +30,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bindShared('wp-api', function ($app) {
+		$this->app->singleton('wp-api', function ($app) {
 
             $endpoint = $this->app['config']->get('wp-api.endpoint');
             $auth     = $this->app['config']->get('wp-api.auth');
